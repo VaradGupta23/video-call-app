@@ -1,6 +1,7 @@
-const APP_ID = "390489da3e9847f4b4587c18b0f85e89";
+const APP_ID = "390489da3e9847f4b4587c18b0f85e89 ";
 const TOKEN = "007eJxTYPgvczLnlyr3uWmsKx21BTZ4/z9ckLbqc+6jW1LRm5jP5HQpMBhbGphYWKYkGqdaWpiYp5kkmZhamCcbWiQZpFmYplpYBoh+SG8IZGTgnDaBmZEBAkF8boaS1OIS54zEvLzUHAYGAEeMIf0=";
-const CHANNEL = "testChannel";
+const CHANNEL = "testChannel"; 
+
 let client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
 let localTrack, localAudioTrack;
@@ -39,7 +40,7 @@ async function joinCall() {
     remoteUid = user.uid;
   });
 
-  // Handle user leaving
+  
   client.on("user-unpublished", (user) => {
     console.log("Remote user left:", user.uid);
     document.getElementById("remote-player").innerHTML = "";
@@ -48,7 +49,7 @@ async function joinCall() {
 
 joinCall();
 
-// Mic toggle
+
 let micMuted = false;
 function toggleMic() {
   if (!localAudioTrack) return;
@@ -56,7 +57,6 @@ function toggleMic() {
   localAudioTrack.setEnabled(!micMuted);
 }
 
-// Camera toggle
 let cameraOff = false;
 function toggleCamera() {
   if (!localTrack) return;
@@ -64,7 +64,7 @@ function toggleCamera() {
   localTrack.setEnabled(!cameraOff);
 }
 
-// Leave call
+
 async function leaveCall() {
   localTrack.close();
   localAudioTrack.close();
